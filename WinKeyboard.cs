@@ -1,4 +1,6 @@
-﻿namespace SCEWin;
+﻿using System.Runtime.InteropServices;
+
+namespace SCEWin;
 
 public static class WinKeyboard
 {
@@ -53,7 +55,7 @@ public static class WinKeyboard
 
         if (result == 0)
         {
-            throw new Exception($"Failed to resolve process id: {WinApi.GetLastError()}.");
+            throw new Exception($"Failed to resolve process id: {Marshal.GetLastWin32Error()}.");
         }
 
         return Environment.ProcessId == lpdwProcessId;

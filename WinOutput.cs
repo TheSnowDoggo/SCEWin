@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32.SafeHandles;
 using SCENeo;
 using SCENeo.Utils;
+using System.Runtime.InteropServices;
 
 namespace SCEWin;
 
@@ -18,7 +19,7 @@ public sealed class WinOutput : IOutputSource
 
         if (_handle.IsInvalid)
         {
-            throw new Exception($"Failed to resolve File Handle during initialization: {WinApi.GetLastError()}");
+            throw new Exception($"Failed to resolve file handle during initialization: {Marshal.GetLastWin32Error()}");
         }
     }
 

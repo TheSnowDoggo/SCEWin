@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32.SafeHandles;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace SCEWin;
 
@@ -77,7 +78,7 @@ internal static partial class WinApi
     public record struct CharInfo
     {
         [FieldOffset(0)] public CharUnion Char;
-        [FieldOffset(2)] public short Attributes;
+        [FieldOffset(2)] public short     Attributes;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -112,6 +113,8 @@ internal static partial class WinApi
 
     internal delegate IntPtr HookProc(int nCode, IntPtr wParam, IntPtr lParam);
 
+    internal const int CfText = 1;
+
     private const string Kernel32 = "kernel32";
     private const string User32   = "user32";
 
@@ -144,9 +147,6 @@ internal static partial class WinApi
     internal static partial short GetKeyState(int nVirtKey);
 
     [LibraryImport(User32, SetLastError = true)]
-    internal static partial uint GetLastError();
-
-    [LibraryImport(User32, SetLastError = true)]
     internal static partial IntPtr SetWindowsHookExW(int idHook, HookProc lpfn, IntPtr hMod, uint dwThreadId);
 
     [LibraryImport(User32, SetLastError = true)]
@@ -173,6 +173,19 @@ internal static partial class WinApi
     [LibraryImport(User32, SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     internal static partial bool GetMessageW(out TagMsg lpMsg, IntPtr hWnd, uint wMsgFilterMin, uint wMsgFilterMax);
+
+    [DllImport(User32, SetLastError = true)]
+    internal static extern int ToUnicode(
+        uint wVirtKey,
+        uint wScanCode,
+        [In] byte[] lpKeyState,
+        [Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder pwszBuff,
+        int cchBuff,
+        uint wFlags);
+
+    [LibraryImport(User32, SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    internal static partial bool GetKeyboardState([Out] byte[] lpKeyState);
 
     #endregion
 }
