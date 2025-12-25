@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32.SafeHandles;
 using SCENeo;
-using SCENeo.Utils;
 using System.Runtime.InteropServices;
 
 namespace SCEWin;
@@ -24,6 +23,9 @@ public sealed class WinOutput : IOutputSource
     }
 
     public static WinOutput Instance { get => _lazy.Value; }
+
+    public int Width { get { return Console.WindowWidth; } }
+    public int Height { get { return Console.WindowHeight; } }
 
     public void Update(IView<Pixel> grid)
     {
@@ -66,9 +68,10 @@ public sealed class WinOutput : IOutputSource
 
     private static WinApi.CharInfo[] ToCharInfoBuffer(IView<Pixel> grid)
     {
-        var buffer = new WinApi.CharInfo[grid.Size()];
+        var buffer = new WinApi.CharInfo[grid.Width * grid.Height];
 
         int i = 0;
+
         for (int y = 0; y < grid.Height; y++)
         {
             for (int x = 0; x < grid.Width; x++)
