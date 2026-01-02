@@ -11,10 +11,29 @@
 	<Title>SCEWin</Title>
 	<Authors>Luna Sparkle</Authors>
 	<Description>windows utility functions for SCENeo</Description>
+	<Copyright>MIT License</Copyright>
+	<PackageProjectUrl>https://github.com/TheSnowDoggo/SCEWin/</PackageProjectUrl>
+	<RepositoryUrl>https://github.com/TheSnowDoggo/SCEWin/</RepositoryUrl>
+	<PackageReleaseNotes>first</PackageReleaseNotes>
+	<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<SignAssembly>True</SignAssembly>
+	<AssemblyOriginatorKeyFile>keyPair.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="SCENeo" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
