@@ -4,6 +4,9 @@ using System.Text;
 
 namespace SCEWin;
 
+/// <summary>
+/// A struct containing information about a low-level keyboard event.
+/// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public readonly struct KBDLLHookStruct
 {
