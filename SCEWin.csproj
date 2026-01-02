@@ -7,12 +7,14 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<Title>SCEWin</Title>
+	<Authors>Luna Sparkle</Authors>
+	<Description>windows utility functions for SCENeo</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="SCENeo">
-      <HintPath>..\SCENeo\bin\Debug\net9.0\SCENeo.dll</HintPath>
-    </Reference>
+    <PackageReference Include="SCENeo" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
