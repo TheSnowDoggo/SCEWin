@@ -22,7 +22,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SCENeo" Version="1.0.0" />
+    <Reference Include="SCENeo">
+      <HintPath>..\SCENeo\bin\Debug\net9.0\SCENeo.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
