@@ -39,8 +39,6 @@ public sealed class WinOutput : IOutputSource
 
         var rect = new WinApi.SmallRect()
         {
-            Left   = 0,
-            Top    = 0,
             Right  = size.X,
             Bottom = size.Y,
         };
